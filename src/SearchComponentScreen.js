@@ -4,7 +4,8 @@ import {
   Picker,
   Text,
   View,
-  Image
+  Image,
+  Button
 } from 'react-native';
 
 const remoteImageLogo = { uri:'https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAilAAAAJGEyYWZiNDFkLThmZDItNDIzNS04MzViLWVhN2NkZGEyYzliYg.png' };
@@ -39,6 +40,7 @@ class SearchComponentScreen extends React.Component {
   };
 
   render() {
+    const { navigate } = this.props.navigation;
     const { params } = this.props.navigation.state;
     console.log(`User logged in: ${params.mobile}`);
     return (
@@ -46,12 +48,16 @@ class SearchComponentScreen extends React.Component {
         <View style={styles.containerTop}>
           <Image source={remoteImageLogo} style={styles.logo} />
           <View style={styles.subContainerTabs}>
-            <Text style={styles.tabSearch}>
-              Search
-            </Text>
-            <Text style={styles.tabManage}>
-              Manage
-            </Text>
+            <Button
+              style={styles.buttonSearch}
+              onPress={() => navigate('', {})}
+              title="Search"
+            />
+            <Button
+              style={styles.buttonManage}
+              onPress={() => navigate('', {})}
+              title="Manage"
+            />
           </View>
         </View>
         <View style={styles.containerMiddle}>
@@ -70,15 +76,16 @@ class SearchComponentScreen extends React.Component {
               </Picker>
             </View>
             <View style={styles.searchBottom}>
-              <Text style={styles.searchBottomText}>
-                Search
-              </Text>
+              <Button
+                style={styles.buttonSelect}
+                onPress={() => navigate('', {})}
+                title="Select"
+              />
             </View>
           </View>
         </View>
         <View style={styles.containerBottom}>
           <Text style={styles.searchAdvanced}>
-            Advanced Search
           </Text>
         </View>
       </View>
@@ -113,27 +120,11 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: 'white'
   },
-  tabSearch: {
-    flex: 3,
-    textAlign: 'center',
-    color: '#333333',
-    backgroundColor: 'steelblue',
-    margin: 3,
-    borderStyle: 'solid',
-    borderWidth: 3,
-    borderRadius: 4,
-    borderColor: 'black'
+  buttonSearch: {
+    flex: 3
   },
-  tabManage: {
-    flex: 3,
-    textAlign: 'center',
-    color: '#333333',
-    backgroundColor: 'white',
-    margin: 3,
-    borderStyle: 'solid',
-    borderWidth: 3,
-    borderRadius: 4,
-    borderColor: 'black'
+  buttonManage: {
+    flex: 3
   },
   containerMiddle: {
     flex: 3,
@@ -161,13 +152,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     margin: 10
   },
-  searchBottomText: {
+  buttonSelect: {
     flex: 1,
-    textAlign: 'center',
-    alignItems: 'center',
-    color: '#333333',
-    backgroundColor: 'white',
-    margin: 10
   },
   containerBottom: {
     flex: 1,
@@ -177,7 +163,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     color: '#333333',
-    backgroundColor: 'yellow',
+    backgroundColor: 'white',
     margin: 20
   }
 });
