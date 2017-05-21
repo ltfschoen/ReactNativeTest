@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "backgroundColor": "red",
+          "flex": 1,
+          "flexDirection": "row",
+          "fontSize": 20,
+          "margin": 20,
+          "textAlign": "center",
+        }
+      }
+    >
+      Logo
+    </Text>
+    <View
+      style={
+        Object {
+          "backgroundColor": "white",
+          "flex": 1,
+          "flexDirection": "row",
+          "margin": 20,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "backgroundColor": "steelblue",
+            "borderColor": "black",
+            "borderRadius": 4,
+            "borderStyle": "solid",
+            "borderWidth": 3,
+            "color": "#333333",
+            "flex": 3,
+            "margin": 3,
+            "textAlign": "center",
+          }
+        }
+      >
+        Search
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderColor": "black",
+            "borderRadius": 4,
+            "borderStyle": "solid",
+            "borderWidth": 3,
+            "color": "#333333",
+            "flex": 3,
+            "margin": 3,
+            "textAlign": "center",
+          }
+        }
+      >
+        Manage
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 3,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "borderColor": "black",
+          "borderRadius": 4,
+          "borderStyle": "solid",
+          "borderWidth": 3,
+          "flex": 1,
+          "flexDirection": "column",
+          "margin": 20,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 3,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "steelblue",
+              "color": "#333333",
+              "flex": 3,
+              "margin": 10,
+              "textAlign": "center",
+            }
+          }
+        >
+          Search List
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "white",
+              "color": "#333333",
+              "flex": 1,
+              "margin": 10,
+              "textAlign": "center",
+            }
+          }
+        >
+          Search
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "backgroundColor": "yellow",
+          "color": "#333333",
+          "flex": 1,
+          "margin": 20,
+          "textAlign": "center",
+        }
+      }
+    >
+      Advanced Search
+    </Text>
+  </View>
+</View>
+`;
