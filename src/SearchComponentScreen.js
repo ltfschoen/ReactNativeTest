@@ -1,14 +1,40 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
+  Picker,
   Text,
   View
 } from 'react-native';
+
+const Item = Picker.Item;
 
 class SearchComponentScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     mobile: `${navigation.state.params.mobile}`,
   });
+  static title = '<Picker>';
+  static description = 'Multiple options with either a dropdown menu or dialog.';
+  state = {
+    selected1: 'key1',
+    selected2: 'key1',
+    selected3: 'key1',
+    color: 'red',
+    mode: Picker.MODE_DIALOG,
+  };
+
+  changeMode = () => {
+    const newMode = this.state.mode === Picker.MODE_DIALOG
+      ? Picker.MODE_DROPDOWN
+      : Picker.MODE_DIALOG;
+    this.setState({mode: newMode});
+  };
+
+  onValueChange = (key: string, value: string) => {
+    const newState = {};
+    newState[key] = value;
+    this.setState(newState);
+  };
+
   render() {
     const { params } = this.props.navigation.state;
     return (
@@ -29,9 +55,17 @@ class SearchComponentScreen extends React.Component {
         <View style={styles.containerMiddle}>
           <View style={styles.subContainerMiddleSearch}>
             <View style={styles.searchTop}>
-              <Text style={styles.searchTopText}>
-                Search List
-              </Text>
+              <Picker
+                style={styles.searchTopPicker}
+                selectedValue={this.state.selected1}
+                onValueChange={this.onValueChange.bind(this, 'selected1')}
+                mode="dropdown"
+                prompt="Pick one">
+                <Item label="Barista" color="#000000" value="key0" />
+                <Item label="Cook" color="#000000" value="key1" />
+                <Item label="Bar Attendant" color="#000000" value="key1" />
+                <Item label="Kitchen Hand" color="#000000" value="key1" />
+              </Picker>
             </View>
             <View style={styles.searchBottom}>
               <Text style={styles.searchBottomText}>
@@ -121,12 +155,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row'
   },
-  searchTopText: {
-    flex: 3,
-    textAlign: 'center',
-    alignItems: 'center',
-    color: '#333333',
-    backgroundColor: 'steelblue',
+  searchTopPicker: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
     margin: 10
   },
   searchBottomText: {
