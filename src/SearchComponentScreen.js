@@ -3,8 +3,11 @@ import {
   StyleSheet,
   Picker,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
+
+const remoteImageLogo = { uri:'https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAilAAAAJGEyYWZiNDFkLThmZDItNDIzNS04MzViLWVhN2NkZGEyYzliYg.png' };
 
 const Item = Picker.Item;
 
@@ -37,12 +40,11 @@ class SearchComponentScreen extends React.Component {
 
   render() {
     const { params } = this.props.navigation.state;
+    console.log(`User logged in: ${params.mobile}`);
     return (
       <View style={styles.container}>
         <View style={styles.containerTop}>
-          <Text style={styles.logo}>
-            Logo {params.mobile}
-          </Text>
+          <Image source={remoteImageLogo} style={styles.logo} />
           <View style={styles.subContainerTabs}>
             <Text style={styles.tabSearch}>
               Search
@@ -101,10 +103,9 @@ const styles = StyleSheet.create({
   logo: {
     flex: 1,
     flexDirection: 'row',
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 20,
-    backgroundColor: 'red'
+    width: 50,
+    height: 100,
+    margin: 20
   },
   subContainerTabs: {
     flex: 1,
