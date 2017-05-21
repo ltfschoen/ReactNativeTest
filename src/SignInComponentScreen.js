@@ -22,7 +22,7 @@ const onButtonPress = () => {
 class SignInComponentScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: '' };
+    this.state = { mobile: '123' };
   }
   static navigationOptions = {
     title: 'Sign In',
@@ -73,8 +73,8 @@ class SignInComponentScreen extends React.Component {
                 placeholder={'04xx-xxx-xxx'}
                 placeholderTextColor={'#DDDDDD'}
                 returnKeyType={'done'}
-                onChangeText={(text) => this.setState({text})}
-                value={this.state.text}
+                onChangeText={(mobile) => this.setState({mobile})}
+                value={this.state.mobile}
               />
             </View>
           </View>
@@ -85,7 +85,7 @@ class SignInComponentScreen extends React.Component {
               Or sign up
             </Text>
             <Button
-              onPress={() => navigate('SearchComponent')}
+              onPress={() => navigate('SearchComponent', { mobile: this.state.mobile })}
               title="Next"
             />
           </View>

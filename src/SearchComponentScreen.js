@@ -5,44 +5,50 @@ import {
   View
 } from 'react-native';
 
-const SearchComponentScreen = () => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.containerTop}>
-        <Text style={styles.logo}>
-          Logo
-        </Text>
-        <View style={styles.subContainerTabs}>
-          <Text style={styles.tabSearch}>
-            Search
+class SearchComponentScreen extends React.Component {
+  static navigationOptions = ({ navigation }) => ({
+    mobile: `${navigation.state.params.mobile}`,
+  });
+  render() {
+    const { params } = this.props.navigation.state;
+    return (
+      <View style={styles.container}>
+        <View style={styles.containerTop}>
+          <Text style={styles.logo}>
+            Logo {params.mobile}
           </Text>
-          <Text style={styles.tabManage}>
-            Manage
-          </Text>
-        </View>
-      </View>
-      <View style={styles.containerMiddle}>
-        <View style={styles.subContainerMiddleSearch}>
-          <View style={styles.searchTop}>
-            <Text style={styles.searchTopText}>
-              Search List
-            </Text>
-          </View>
-          <View style={styles.searchBottom}>
-            <Text style={styles.searchBottomText}>
+          <View style={styles.subContainerTabs}>
+            <Text style={styles.tabSearch}>
               Search
             </Text>
+            <Text style={styles.tabManage}>
+              Manage
+            </Text>
           </View>
         </View>
+        <View style={styles.containerMiddle}>
+          <View style={styles.subContainerMiddleSearch}>
+            <View style={styles.searchTop}>
+              <Text style={styles.searchTopText}>
+                Search List
+              </Text>
+            </View>
+            <View style={styles.searchBottom}>
+              <Text style={styles.searchBottomText}>
+                Search
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.containerBottom}>
+          <Text style={styles.searchAdvanced}>
+            Advanced Search
+          </Text>
+        </View>
       </View>
-      <View style={styles.containerBottom}>
-        <Text style={styles.searchAdvanced}>
-          Advanced Search
-        </Text>
-      </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 export default SearchComponentScreen;
 
