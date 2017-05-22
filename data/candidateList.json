@@ -1,0 +1,35 @@
+[
+  {
+    "name_initials": "JB",
+    "rate_hourly": 30,
+    "distance_away": 10,
+    "certificate_names": ["RSA", "Barista(2)"],
+    "online_status": "online",
+    "recommendations_qty": "3",
+    "criminal_check": "passed",
+    "completion_pct": "90",
+    "vehicle_has": true
+  },
+  {
+    "name_initials": "TS",
+    "rate_hourly": 50,
+    "distance_away": 4,
+    "certificate_names": [],
+    "online_status": "online",
+    "recommendations_qty": 5,
+    "criminal_check": "passed",
+    "completion_pct": "100",
+    "vehicle_has": true
+  },
+  {
+    "name_initials": "PB",
+    "rate_hourly": 40,
+    "distance_away": 5,
+    "certificate_names": ["Cook", "Barista(2)"],
+    "online_status": "offline",
+    "recommendations_qty": "2",
+    "criminal_check": "in progress",
+    "completion_pct": 70,
+    "vehicle_has": false
+  }
+]

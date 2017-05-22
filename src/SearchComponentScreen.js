@@ -7,24 +7,24 @@ import {
   Image,
   Button
 } from 'react-native';
-
 const remoteImageLogo = { uri:'https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAilAAAAJGEyYWZiNDFkLThmZDItNDIzNS04MzViLWVhN2NkZGEyYzliYg.png' };
 
 const Item = Picker.Item;
 
 class SearchComponentScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedCriteria: 'barista',
+      mode: Picker.MODE_DIALOG
+    };
+  }
   static navigationOptions = ({ navigation }) => ({
+    title: 'Search',
     mobile: `${navigation.state.params.mobile}`,
   });
   static title = '<Picker>';
   static description = 'Multiple options with either a dropdown menu or dialog.';
-  state = {
-    selected1: 'key1',
-    selected2: 'key1',
-    selected3: 'key1',
-    color: 'red',
-    mode: Picker.MODE_DIALOG,
-  };
 
   changeMode = () => {
     const newMode = this.state.mode === Picker.MODE_DIALOG
@@ -65,21 +65,21 @@ class SearchComponentScreen extends React.Component {
             <View style={styles.searchTop}>
               <Picker
                 style={styles.searchTopPicker}
-                selectedValue={this.state.selected1}
-                onValueChange={this.onValueChange.bind(this, 'selected1')}
+                selectedValue={this.state.selectedCriteria}
+                onValueChange={this.onValueChange.bind(this, 'selectedCriteria')}
                 mode="dropdown"
                 prompt="Pick one">
-                <Item label="Barista" color="#000000" value="key0" />
-                <Item label="Cook" color="#000000" value="key1" />
-                <Item label="Bar Attendant" color="#000000" value="key1" />
-                <Item label="Kitchen Hand" color="#000000" value="key1" />
+                <Item label="Barista" color="#000000" value="barista" />
+                <Item label="Cook" color="#000000" value="cook" />
+                <Item label="Bar Attendant" color="#000000" value="bar attendant" />
+                <Item label="Kitchen Hand" color="#000000" value="kitchen hand" />
               </Picker>
             </View>
             <View style={styles.searchBottom}>
               <Button
-                style={styles.buttonSelect}
-                onPress={() => navigate('', {})}
-                title="Select"
+                style={styles.buttonRummage}
+                onPress={() => navigate('CandidateListComponent', { criteria: this.state.selectedCriteria })}
+                title="Rummage"
               />
             </View>
           </View>
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     margin: 10
   },
-  buttonSelect: {
+  buttonRummage: {
     flex: 1,
   },
   containerBottom: {

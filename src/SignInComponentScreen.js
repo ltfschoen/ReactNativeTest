@@ -5,8 +5,13 @@ import {
   TextInput,
   View,
   Image,
-  Button
+  Button,
+  TouchableHighlight
 } from 'react-native';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
+import TouchableItem from "../node_modules/react-navigation/lib-rn/views/TouchableItem";
+const iconSignIn = (<Icon name="sign-in" size={30} color="#FFFFFF" />);
 
 const playIcon = require('../images/play.png');
 const volumeIcon = require('../images/sound.png');
@@ -15,11 +20,7 @@ const fullScreenIcon = require('../images/full-screen.png');
 // TODO - Replace with AWS S3 image
 const remoteImageLogo = { uri:'https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAilAAAAJGEyYWZiNDFkLThmZDItNDIzNS04MzViLWVhN2NkZGEyYzliYg.png' };
 
-const onButtonPress = () => {
-  Alert.alert('Button pressed!');
-};
-
-class SignInComponentScreen extends React.Component {
+export default class SignInComponentScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = { mobile: '123' };
@@ -76,6 +77,15 @@ class SignInComponentScreen extends React.Component {
                 onChangeText={(mobile) => this.setState({mobile})}
                 value={this.state.mobile}
               />
+              <TouchableHighlight
+                style={styles.btnClickContain}
+                onPress={() => navigate('SearchComponent', { mobile: this.state.mobile })}
+                underlayColor='#042417'>
+                <View style={styles.btnContainer}>
+                  {iconSignIn}
+                  <Text style={styles.btnText}></Text>
+                </View>
+              </TouchableHighlight>
             </View>
           </View>
         </View>
@@ -84,18 +94,20 @@ class SignInComponentScreen extends React.Component {
             <Text style={styles.signUpText}>
               Or sign up
             </Text>
-            <Button
-              onPress={() => navigate('SearchComponent', { mobile: this.state.mobile })}
-              title="Next"
-            />
+            <TouchableHighlight
+              style={styles.btnClickContain}
+              onPress={() => navigate('SearchComponent', {})}
+              underlayColor='#042417'>
+              <View style={styles.btnContainer}>
+                <Text style={styles.btnText}>Next</Text>
+              </View>
+            </TouchableHighlight>
           </View>
         </View>
       </View>
     );
   }
 }
-
-export default SignInComponentScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -106,7 +118,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   containerTop: {
-    flex: 3,
+    flex: 2,
     flexDirection: 'row',
   },
   fullscreen: {
@@ -186,7 +198,7 @@ const styles = StyleSheet.create({
     margin: 5
   },
   mobileBottomTextInputMobileSuffix: {
-    flex: 5,
+    flex: 2,
     height: 30,
     backgroundColor: '#AAAAAA',
     margin: 5
@@ -211,5 +223,35 @@ const styles = StyleSheet.create({
     color: '#333333',
     backgroundColor: 'white',
     margin: 10
+  },
+  btnClickContain: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    alignSelf: 'stretch',
+    backgroundColor: '#009D6E',
+    borderRadius: 5,
+    padding: 5,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  btnContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    alignSelf: 'stretch',
+    borderRadius: 10,
+  },
+  btnIcon: {
+    height: 25,
+    width: 25,
+  },
+  btnText: {
+    fontSize: 18,
+    color: '#FAFAFA',
+    marginLeft: 10,
+    marginTop: 2,
   }
 });
