@@ -1,3 +1,7 @@
+* Animated Demo
+
+	![alt tag](https://raw.githubusercontent.com/ltfschoen/ReactNativeTest/master/screenshots/animated.gif)
+
 * Screenshots
 
 	![alt tag](https://raw.githubusercontent.com/ltfschoen/ReactNativeTest/master/screenshots/001.png)
