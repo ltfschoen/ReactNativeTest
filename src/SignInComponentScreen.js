@@ -30,86 +30,101 @@ export default class SignInComponentScreen extends React.Component {
   static navigationOptions = {
     title: 'Sign In',
   };
+  renderTop() {
+    return (
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.containerTop}>
+          <Image source={remoteImageLogo} style={styles.fullscreen}>
+            <View style={styles.containerVideo}>
+              <Image source={playIcon} style={styles.icon} />
+              <Image source={volumeIcon} style={styles.icon} />
+              <View style={styles.progress}>
+                <View style={styles.progressBar} />
+              </View>
+              <Image source={hdIcon} style={styles.icon} />
+              <Image source={fullScreenIcon} style={styles.icon} />
+            </View>
+          </Image>
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  }
+  renderMiddle(navigate) {
+    return (
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.containerMiddle}>
+          <View style={styles.subContainerMiddle}>
+            <View style={styles.mobileTop}>
+              <Text style={styles.mobileTopText}>
+                Enter your mobile number
+              </Text>
+            </View>
+            <View style={styles.mobileBottom}>
+              <TextInput
+                style={styles.mobileBottomTextInputMobilePrefix}
+                editable={true}
+                maxLength={10}
+                autoCorrect={false}
+                autoFocus={false}
+                keyboardType={'phone-pad'}
+                placeholder={'+61'}
+                placeholderTextColor={'#DDDDDD'}
+                returnKeyType={'next'}
+              />
+              <TextInput
+                style={styles.mobileBottomTextInputMobileSuffix}
+                editable={true}
+                maxLength={50}
+                autoCorrect={false}
+                autoFocus={true}
+                keyboardType={'phone-pad'}
+                placeholder={'04xx-xxx-xxx'}
+                placeholderTextColor={'#DDDDDD'}
+                returnKeyType={'done'}
+                onChangeText={(mobile) => this.setState({mobile})}
+                value={this.state.mobile}
+              />
+              <TouchableHighlight
+                style={styles.btnClickContain}
+                onPress={() => navigate('SearchComponent', { mobile: this.state.mobile })}
+                underlayColor='#042417'>
+                <View style={styles.btnContainer}>
+                  {iconSignIn}
+                  <Text style={styles.btnText}></Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  }
+  renderBottom(navigate) {
+    return (
+      <View style={styles.containerBottom}>
+        <View style={styles.subContainerBottom}>
+          <Text style={styles.signUpText}>
+            Or sign up
+          </Text>
+          <TouchableHighlight
+            style={styles.btnClickContain}
+            onPress={() => navigate('SearchComponent', {})}
+            underlayColor='#042417'>
+            <View style={styles.btnContainer}>
+              <Text style={styles.btnText}>Next</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
+      </View>
+    );
+  }
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={styles.containerTop}>
-            <Image source={remoteImageLogo} style={styles.fullscreen}>
-              <View style={styles.containerVideo}>
-                <Image source={playIcon} style={styles.icon} />
-                <Image source={volumeIcon} style={styles.icon} />
-                <View style={styles.progress}>
-                  <View style={styles.progressBar} />
-                </View>
-                <Image source={hdIcon} style={styles.icon} />
-                <Image source={fullScreenIcon} style={styles.icon} />
-              </View>
-            </Image>
-          </View>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={styles.containerMiddle}>
-            <View style={styles.subContainerMiddle}>
-              <View style={styles.mobileTop}>
-                <Text style={styles.mobileTopText}>
-                  Enter your mobile number
-                </Text>
-              </View>
-              <View style={styles.mobileBottom}>
-                <TextInput
-                  style={styles.mobileBottomTextInputMobilePrefix}
-                  editable={true}
-                  maxLength={10}
-                  autoCorrect={false}
-                  autoFocus={false}
-                  keyboardType={'phone-pad'}
-                  placeholder={'+61'}
-                  placeholderTextColor={'#DDDDDD'}
-                  returnKeyType={'next'}
-                />
-                <TextInput
-                  style={styles.mobileBottomTextInputMobileSuffix}
-                  editable={true}
-                  maxLength={50}
-                  autoCorrect={false}
-                  autoFocus={true}
-                  keyboardType={'phone-pad'}
-                  placeholder={'04xx-xxx-xxx'}
-                  placeholderTextColor={'#DDDDDD'}
-                  returnKeyType={'done'}
-                  onChangeText={(mobile) => this.setState({mobile})}
-                  value={this.state.mobile}
-                />
-                <TouchableHighlight
-                  style={styles.btnClickContain}
-                  onPress={() => navigate('SearchComponent', { mobile: this.state.mobile })}
-                  underlayColor='#042417'>
-                  <View style={styles.btnContainer}>
-                    {iconSignIn}
-                    <Text style={styles.btnText}></Text>
-                  </View>
-                </TouchableHighlight>
-              </View>
-            </View>
-          </View>
-        </TouchableWithoutFeedback>
-        <View style={styles.containerBottom}>
-          <View style={styles.subContainerBottom}>
-            <Text style={styles.signUpText}>
-              Or sign up
-            </Text>
-            <TouchableHighlight
-              style={styles.btnClickContain}
-              onPress={() => navigate('SearchComponent', {})}
-              underlayColor='#042417'>
-              <View style={styles.btnContainer}>
-                <Text style={styles.btnText}>Next</Text>
-              </View>
-            </TouchableHighlight>
-          </View>
-        </View>
+        {this.renderTop()}
+        {this.renderMiddle(navigate)}
+        {this.renderBottom(navigate)}
       </View>
     );
   }
@@ -119,8 +134,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: 'flex-start',
+    // alignItems: 'center',
     backgroundColor: 'white',
   },
   containerTop: {
@@ -173,7 +188,7 @@ const styles = StyleSheet.create({
   subContainerMiddle: {
     flex: 1,
     flexDirection: 'column',
-    margin: 20,
+    margin: 5,
     borderStyle: 'solid',
     borderWidth: 3,
     borderRadius: 4,
@@ -216,7 +231,7 @@ const styles = StyleSheet.create({
   subContainerBottom: {
     flex: 1,
     flexDirection: 'row',
-    margin: 20,
+    margin: 5,
     borderStyle: 'solid',
     borderWidth: 3,
     borderRadius: 4,
